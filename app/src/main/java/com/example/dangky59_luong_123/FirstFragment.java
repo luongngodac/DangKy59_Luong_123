@@ -88,6 +88,8 @@ public class FirstFragment extends Fragment implements View.OnClickListener, Ada
         rdgPhuongThuc = ((MainActivity)getActivity()).findViewById(R.id.rdgPhuongThuc);
         edtNgaySinh = ((MainActivity)getActivity()).findViewById(R.id.edtNgaySinh);
         rbTienMat = ((MainActivity)getActivity()).findViewById(R.id.rbTienMat);
+        rbNganHang = ((MainActivity)getActivity()).findViewById(R.id.rbNganHang);
+        rbViDienTu = ((MainActivity)getActivity()).findViewById(R.id.rbViDienTu);
         setTextNgaySinh(calendar);
     }
 
@@ -155,12 +157,13 @@ public class FirstFragment extends Fragment implements View.OnClickListener, Ada
 
     private String hinhThucThanhToan()
     {
-        int id = rdgPhuongThuc.getCheckedRadioButtonId();
         String str = "";
-        switch (id) {
-            case R.id.rbTienMat: str = rbTienMat.getText().toString(); break;
-            case R.id.rbNganHang: str = rbNganHang.getText().toString(); break;
-            case R.id.rbViDienTu: str = rbViDienTu.getText().toString(); break;
+        if (rbViDienTu.isChecked()) {
+            str = rbViDienTu.getText().toString();
+        } else if (rbNganHang.isChecked()) {
+            str = rbNganHang.getText().toString();
+        } else if (rbTienMat.isChecked()) {
+            str = rbTienMat.getText().toString();
         }
         return str;
     }
